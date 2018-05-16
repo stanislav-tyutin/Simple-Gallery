@@ -630,15 +630,14 @@ class MediaActivity : SimpleActivity(), MediaAdapter.MediaOperationsListener {
             }
             finish()
         } else {
-            val isVideo = path.isVideoFast()
-            if (isVideo) {
-                openPath(path, false)
-            } else {
+            if (path.isJpg() || path.isPng() || path.isGif()) {
                 Intent(this, ViewPagerActivity::class.java).apply {
                     putExtra(PATH, path)
                     putExtra(SHOW_ALL, mShowAll)
                     startActivity(this)
                 }
+            } else {
+                openPath(path, false)
             }
         }
     }

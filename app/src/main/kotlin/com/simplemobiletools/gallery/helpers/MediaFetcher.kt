@@ -187,20 +187,20 @@ class MediaFetcher(val context: Context) {
             val isVideo = if (isImage) false else filename.isVideoFast()
             val isGif = if (isImage || isVideo) false else filename.isGif()
 
-            if (!isImage && !isVideo && !isGif)
-                continue
-
-            if (isVideo && (isPickImage || filterMedia and TYPE_VIDEOS == 0))
-                continue
-
-            if (isImage && (isPickVideo || filterMedia and TYPE_IMAGES == 0))
-                continue
-
-            if (isGif && filterMedia and TYPE_GIFS == 0)
-                continue
-
-            if (!showHidden && filename.startsWith('.'))
-                continue
+//            if (!isImage && !isVideo && !isGif)
+//                continue
+//
+//            if (isVideo && (isPickImage || filterMedia and TYPE_VIDEOS == 0))
+//                continue
+//
+//            if (isImage && (isPickVideo || filterMedia and TYPE_IMAGES == 0))
+//                continue
+//
+//            if (isGif && filterMedia and TYPE_GIFS == 0)
+//                continue
+//
+//            if (!showHidden && filename.startsWith('.'))
+//                continue
 
             val size = file.length()
             if (size <= 0L || (doExtraCheck && !file.exists()))
@@ -212,7 +212,8 @@ class MediaFetcher(val context: Context) {
             val type = when {
                 isImage -> TYPE_IMAGES
                 isVideo -> TYPE_VIDEOS
-                else -> TYPE_GIFS
+                isGif -> TYPE_GIFS
+                else -> TYPE_OTHER
             }
 
             val medium = Medium(null, filename, file.absolutePath, folder, dateModified, dateTaken, size, type)

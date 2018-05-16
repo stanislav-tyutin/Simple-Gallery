@@ -208,6 +208,10 @@ fun Context.loadImage(type: Int, path: String, target: MySquareImageView, horizo
         } catch (e: OutOfMemoryError) {
             loadJpg(path, target, cropThumbnails)
         }
+    } else if (type == TYPE_OTHER) {
+        Glide.with(applicationContext)
+             .load(R.drawable.img_play_outline_big)
+             .into(target);
     }
 }
 

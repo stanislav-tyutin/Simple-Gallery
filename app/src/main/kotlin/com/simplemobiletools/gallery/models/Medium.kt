@@ -11,6 +11,7 @@ import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.gallery.helpers.TYPE_GIFS
 import com.simplemobiletools.gallery.helpers.TYPE_IMAGES
 import com.simplemobiletools.gallery.helpers.TYPE_VIDEOS
+import com.simplemobiletools.gallery.helpers.TYPE_OTHER
 import java.io.Serializable
 
 @Entity(tableName = "media", indices = [(Index(value = "full_path", unique = true))])

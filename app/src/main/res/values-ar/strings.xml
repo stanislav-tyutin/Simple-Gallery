@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">الاستوديو البسيط</string>
-    <string name="app_launcher_name">الاستوديو</string>
     <string name="edit">تعديل</string>
     <string name="open_camera">فتح الكاميرا</string>
     <string name="hidden">(مخفية)</string>

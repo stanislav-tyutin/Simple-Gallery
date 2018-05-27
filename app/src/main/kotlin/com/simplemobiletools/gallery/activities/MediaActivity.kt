@@ -182,28 +182,28 @@ class MediaActivity : SimpleActivity(), MediaAdapter.MediaOperationsListener {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_media, menu)
-
-        val isFolderHidden = File(mPath).containsNoMedia()
-        menu.apply {
-            findItem(R.id.hide_folder).isVisible = !isFolderHidden && !mShowAll
-            findItem(R.id.unhide_folder).isVisible = isFolderHidden && !mShowAll
-            findItem(R.id.exclude_folder).isVisible = !mShowAll
-
-            findItem(R.id.folder_view).isVisible = mShowAll
-            findItem(R.id.open_camera).isVisible = mShowAll
-            findItem(R.id.about).isVisible = mShowAll
-
-            findItem(R.id.temporarily_show_hidden).isVisible = !config.shouldShowHidden
-            findItem(R.id.stop_showing_hidden).isVisible = config.temporarilyShowHidden
-
-            findItem(R.id.increase_column_count).isVisible = config.viewTypeFiles == VIEW_TYPE_GRID && config.mediaColumnCnt < MAX_COLUMN_COUNT
-            findItem(R.id.reduce_column_count).isVisible = config.viewTypeFiles == VIEW_TYPE_GRID && config.mediaColumnCnt > 1
-
-            findItem(R.id.toggle_filename).isVisible = config.viewTypeFiles == VIEW_TYPE_GRID
-        }
-
-        setupSearch(menu)
+//        menuInflater.inflate(R.menu.menu_media, menu)
+//
+//        val isFolderHidden = File(mPath).containsNoMedia()
+//        menu.apply {
+//            findItem(R.id.hide_folder).isVisible = !isFolderHidden && !mShowAll
+//            findItem(R.id.unhide_folder).isVisible = isFolderHidden && !mShowAll
+//            findItem(R.id.exclude_folder).isVisible = !mShowAll
+//
+//            findItem(R.id.folder_view).isVisible = mShowAll
+//            findItem(R.id.open_camera).isVisible = mShowAll
+//            findItem(R.id.about).isVisible = mShowAll
+//
+//            findItem(R.id.temporarily_show_hidden).isVisible = !config.shouldShowHidden
+//            findItem(R.id.stop_showing_hidden).isVisible = config.temporarilyShowHidden
+//
+//            findItem(R.id.increase_column_count).isVisible = config.viewTypeFiles == VIEW_TYPE_GRID && config.mediaColumnCnt < MAX_COLUMN_COUNT
+//            findItem(R.id.reduce_column_count).isVisible = config.viewTypeFiles == VIEW_TYPE_GRID && config.mediaColumnCnt > 1
+//
+//            findItem(R.id.toggle_filename).isVisible = config.viewTypeFiles == VIEW_TYPE_GRID
+//        }
+//
+//        setupSearch(menu)
         return true
     }
 

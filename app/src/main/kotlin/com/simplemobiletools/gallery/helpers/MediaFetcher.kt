@@ -4,6 +4,7 @@ import android.content.Context
 import android.database.Cursor
 import android.net.Uri
 import android.provider.MediaStore
+import android.util.Log
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.OTG_PATH
 import com.simplemobiletools.commons.helpers.photoExtensions
@@ -19,6 +20,7 @@ class MediaFetcher(val context: Context) {
     var shouldStop = false
 
     fun getFilesFrom(curPath: String, isPickImage: Boolean, isPickVideo: Boolean): ArrayList<Medium> {
+        Log.i("path", curPath)
         val filterMedia = context.config.filterMedia
         if (filterMedia == 0) {
             return ArrayList()
@@ -144,23 +146,23 @@ class MediaFetcher(val context: Context) {
     }
 
     private fun addFolder(curFolders: ArrayList<String>, folder: String) {
-        curFolders.add(folder)
-        if (folder.startsWith(OTG_PATH)) {
-            val files = context.getOTGFolderChildren(folder) ?: return
-            for (file in files) {
-                if (file.isDirectory) {
-                    val relativePath = file.uri.path.substringAfterLast("${context.config.OTGPartition}:")
-                    addFolder(curFolders, "$OTG_PATH$relativePath")
-                }
-            }
-        } else {
-            val files = File(folder).listFiles() ?: return
-            for (file in files) {
-                if (file.isDirectory) {
-                    addFolder(curFolders, file.absolutePath)
-                }
-            }
-        }
+//        curFolders.add(folder)
+//        if (folder.startsWith(OTG_PATH)) {
+//            val files = context.getOTGFolderChildren(folder) ?: return
+//            for (file in files) {
+//                if (file.isDirectory) {
+//                    val relativePath = file.uri.path.substringAfterLast("${context.config.OTGPartition}:")
+//                    addFolder(curFolders, "$OTG_PATH$relativePath")
+//                }
+//            }
+//        } else {
+//            val files = File(folder).listFiles() ?: return
+//            for (file in files) {
+//                if (file.isDirectory) {
+//                    addFolder(curFolders, file.absolutePath)
+//                }
+//            }
+//        }
     }
 
     private fun fetchFolderContent(path: String, isPickImage: Boolean, isPickVideo: Boolean, filterMedia: Int): ArrayList<Medium> {
@@ -182,6 +184,9 @@ class MediaFetcher(val context: Context) {
                 break
             }
 
+            if (file.isDirectory)
+                continue
+
             val filename = file.name
             val isImage = filename.isImageFast()
             val isVideo = if (isImage) false else filename.isVideoFast()
@@ -202,6 +207,16 @@ class MediaFetcher(val context: Context) {
 //            if (!showHidden && filename.startsWith('.'))
 //                continue
 
+            var validFormat = false
+            for (ext in arrayOf(".jpg", ".png", ".gif", ".pdf", ".html", ".jt")) {
+                if (filename.endsWith(ext, true)) {
+                    validFormat = true
+                    break
+                }
+            }
+            if (!validFormat)
+                continue
+
             val size = file.length()
             if (size <= 0L || (doExtraCheck && !file.exists()))
                 continue
@@ -213,6 +228,9 @@ class MediaFetcher(val context: Context) {
                 isImage -> TYPE_IMAGES
                 isVideo -> TYPE_VIDEOS
                 isGif -> TYPE_GIFS
+                filename.endsWith(".pdf", true) -> TYPE_PDF
+                filename.endsWith(".html", true) -> TYPE_HTML
+                filename.endsWith(".jt", true) -> TYPE_JT
                 else -> TYPE_OTHER
             }
 

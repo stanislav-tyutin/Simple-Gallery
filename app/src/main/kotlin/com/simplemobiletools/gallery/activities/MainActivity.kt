@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.provider.MediaStore
 import android.support.v7.widget.GridLayoutManager
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.ViewGroup
@@ -70,6 +71,7 @@ class MainActivity : SimpleActivity(), DirectoryAdapter.DirOperationsListener {
     private var mStoredPrimaryColor = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.i("color", R.color.color_primary.toString())
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         appLaunched(BuildConfig.APPLICATION_ID)
@@ -110,6 +112,7 @@ class MainActivity : SimpleActivity(), DirectoryAdapter.DirOperationsListener {
     override fun onStart() {
         super.onStart()
         mTempShowHiddenHandler.removeCallbacksAndMessages(null)
+        itemClicked("/storage/emulated/0/bluetooth")
     }
 
     override fun onResume() {
@@ -164,6 +167,8 @@ class MainActivity : SimpleActivity(), DirectoryAdapter.DirOperationsListener {
         } else {
             tryLoadGallery()
         }
+
+        itemClicked("/storage/emulated/0/bluetooth")
     }
 
     override fun onPause() {

@@ -78,6 +78,7 @@ class MediaActivity : SimpleActivity(), MediaAdapter.MediaOperationsListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_media)
+        getSupportActionBar()?.hide()
         intent.apply {
             mIsGetImageIntent = getBooleanExtra(GET_IMAGE_INTENT, false)
             mIsGetVideoIntent = getBooleanExtra(GET_VIDEO_INTENT, false)

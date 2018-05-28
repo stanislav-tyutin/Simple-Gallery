@@ -182,7 +182,21 @@ class MediaFetcher(val context: Context) {
                 break
             }
 
+            if (file.isDirectory)
+                continue
+
             val filename = file.name
+
+            var validFormat = false
+            for (ext in arrayOf(".jpg", ".png", ".gif", ".pdf", ".html", ".jt")) {
+                if (filename.endsWith(ext, true)) {
+                    validFormat = true
+                    break
+                }
+            }
+            if (!validFormat)
+                continue
+
             val isImage = filename.isImageFast()
             val isVideo = if (isImage) false else filename.isVideoFast()
             val isGif = if (isImage || isVideo) false else filename.isGif()

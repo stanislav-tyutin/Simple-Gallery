@@ -103,7 +103,10 @@ const val EXT_ALBUM = 1024
 const val TYPE_IMAGES = 1
 const val TYPE_VIDEOS = 2
 const val TYPE_GIFS = 4
-const val TYPE_OTHER = 10
+const val TYPE_PDF = 10
+const val TYPE_HTML = 11
+const val TYPE_JT = 12
+const val TYPE_OTHER = 15
 
 const val LOCAITON_INTERNAL = 1
 const val LOCATION_SD = 2

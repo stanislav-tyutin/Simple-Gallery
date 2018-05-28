@@ -208,10 +208,22 @@ fun Context.loadImage(type: Int, path: String, target: MySquareImageView, horizo
         } catch (e: OutOfMemoryError) {
             loadJpg(path, target, cropThumbnails)
         }
+    } else if (type == TYPE_PDF) {
+        Glide.with(applicationContext)
+                .load(R.drawable.ft_pdf)
+                .into(target);
+    } else if (type == TYPE_HTML) {
+        Glide.with(applicationContext)
+                .load(R.drawable.ft_html)
+                .into(target);
+    } else if (type == TYPE_JT) {
+        Glide.with(applicationContext)
+                .load(R.drawable.ft_3d)
+                .into(target);
     } else if (type == TYPE_OTHER) {
         Glide.with(applicationContext)
-             .load(R.drawable.img_play_outline_big)
-             .into(target);
+                .load(R.drawable.ft_other)
+                .into(target);
     }
 }
 

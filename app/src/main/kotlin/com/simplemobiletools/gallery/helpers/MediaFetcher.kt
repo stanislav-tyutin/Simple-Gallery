@@ -213,6 +213,9 @@ class MediaFetcher(val context: Context) {
                 isImage -> TYPE_IMAGES
                 isVideo -> TYPE_VIDEOS
                 isGif -> TYPE_GIFS
+                filename.endsWith(".pdf", true) -> TYPE_PDF
+                filename.endsWith(".html", true) -> TYPE_HTML
+                filename.endsWith(".jt", true) -> TYPE_JT
                 else -> TYPE_OTHER
             }
 

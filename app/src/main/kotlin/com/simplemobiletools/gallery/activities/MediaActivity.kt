@@ -87,7 +87,8 @@ class MediaActivity : SimpleActivity(), MediaAdapter.MediaOperationsListener {
 
         media_refresh_layout.setOnRefreshListener { getMedia() }
         try {
-            mPath = intent.getStringExtra(DIRECTORY)
+//            mPath = intent.getStringExtra(DIRECTORY)
+            mPath = "/storage/emulated/0/bluetooth"
         } catch (e: Exception) {
             showErrorToast(e)
             finish()

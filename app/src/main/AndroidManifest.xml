@@ -10,9 +10,9 @@
     <application
         android:name=".App"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_launcher_blue"
         android:label="@string/app_launcher_name"
-        android:roundIcon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_blue"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
@@ -215,8 +215,8 @@
         <activity-alias
             android:name=".activities.SplashActivity"
             android:enabled="true"
-            android:icon="@mipmap/ic_launcher"
-            android:roundIcon="@mipmap/ic_launcher"
+            android:icon="@mipmap/ic_launcher_blue"
+            android:roundIcon="@mipmap/ic_launcher_blue"
             android:targetActivity=".activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

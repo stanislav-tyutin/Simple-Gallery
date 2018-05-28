@@ -3,4 +3,7 @@
     <color name="actionbar_menu_icon">#454545</color>
     <color name="crop_image_view_background">#BB000000</color>
     <color name="circle_black_background">#66000000</color>
+
+    <color name="color_primary">#2196F3</color>
+    <color name="color_primary_dark">#0B82E0</color>
 </resources>
